@@ -14,6 +14,7 @@ const opTab = document.querySelectorAll('.operations__tab');
 const scrollBtn = document.querySelector('.btn--scroll-to');
 const targetEl = document.querySelector('#section--1');
 const navUL = document.querySelector('.nav__links');
+const nav = document.querySelector('.nav');
 
 
 class SiteAnimate{
@@ -59,8 +60,6 @@ class SiteAnimate{
         })
       };
     };
-
-    const nav = document.querySelector('.nav');
 
     nav.addEventListener('mouseover', handleHover.bind(0.5));
     nav.addEventListener('mouseout', handleHover.bind(1));

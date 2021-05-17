@@ -18,7 +18,7 @@ const nav = document.querySelector('.nav');
 
 
 class SiteAnimate{
-
+ 
   // Method to handle modal open and close
   handlePageModal(){
     const openModal = function (e) {
@@ -65,7 +65,7 @@ class SiteAnimate{
     nav.addEventListener('mouseout', handleHover.bind(1));
   }
 
-  // This method will hadle the tab implementation 
+  // This method will handle the tab implementation 
   contentTab(){
     tabContainer.addEventListener('click',(e)=>{
       e.preventDefault();
@@ -92,16 +92,16 @@ class SiteAnimate{
     });
   }
 
-
   // This method will perform the scroll into view functionality
   scrollToView(){
-    // Get the coordinate of the target element
     scrollBtn.addEventListener('click', (e)=>{
       e.preventDefault();
       // Easisest way
       targetEl.scrollIntoView({behavior:"smooth"})
 
-      // Another Way using client rect.
+      
+    // Get the coordinate of the target element
+      // Another Way using client rect with ES5.
         // const coord = targetEl.getBoundingClientRect();
         // const currentScrollX = window.pageXOffset;
         // const currentScrollY = window.pageYOffset;
@@ -116,8 +116,10 @@ class SiteAnimate{
     navUL.addEventListener('click',(e)=>{
       e.preventDefault();
       if(e.target.classList.contains('nav__link')){
-        let att = e.target.getAttribute('href');
-        document.querySelector(att).scrollIntoView({behavior:'smooth'})
+        let targetElement = e.target.getAttribute('href');
+        // Exclude testimonial section for now.
+        targetElement === "#section--3" ? "" :
+        document.querySelector(targetElement).scrollIntoView({behavior:'smooth'})
       }
     });
   }
@@ -175,14 +177,15 @@ class Intersect{
     }
 
     // interset Options
-    const optionsReal = {
+    const intersectOpts = {
       root:null,
       threshold : 0.15
     };
 
     // Initiate a constructor
-    const revealConstructor = new IntersectionObserver(intersectFunction,optionsReal);
+    const revealConstructor = new IntersectionObserver(intersectFunction,intersectOpts);
 
+    // Element(s) to Obserbe.
     sections.forEach(section=>{
       section.classList.add('section--hidden');
       revealConstructor.observe(section);
@@ -214,8 +217,7 @@ class Intersect{
     // Initiate a constructor
     const observer = new IntersectionObserver(intersectFunction,intersetOptions);
 
-    imgToLoad.forEach(img => observer.observe(img))
-    console.log(imgToLoad);
+    imgToLoad.forEach(img => observer.observe(img));
   }
 }
 

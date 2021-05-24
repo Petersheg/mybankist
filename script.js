@@ -6,10 +6,12 @@ const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+
 // PAGE TAB IMPLEMENTATION
 const tabContainer = document.querySelector(".operations__tab-container");
 const opContent = document.querySelectorAll('.operations__content');
 const opTab = document.querySelectorAll('.operations__tab');
+
 // Scroll to view element
 const scrollBtn = document.querySelector('.btn--scroll-to');
 const targetEl = document.querySelector('#section--1');
